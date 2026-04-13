@@ -1,26 +1,62 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-clay-canvas: #F4F1FA;
+  --color-clay-foreground: #332F3A;
+  --color-clay-muted: #635F69;
+  --color-clay-accent: #7C3AED;
+  --color-clay-accent-alt: #DB2777;
+  --color-clay-tertiary: #0EA5E9;
+  --color-clay-success: #10B981;
+  --color-clay-warning: #F59E0B;
+  
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-clayCard: 16px 16px 32px rgba(160, 150, 180, 0.2), -10px -10px 24px rgba(255, 255, 255, 0.9), inset 6px 6px 12px rgba(139, 92, 246, 0.03), inset -6px -6px 12px rgba(255, 255, 255, 1);
+  --shadow-clayButton: 12px 12px 24px rgba(139, 92, 246, 0.3), -8px -8px 16px rgba(255, 255, 255, 0.4), inset 4px 4px 8px rgba(255, 255, 255, 0.4), inset -4px -4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-clayButtonHover: 16px 16px 32px rgba(139, 92, 246, 0.4), -12px -12px 24px rgba(255, 255, 255, 0.5), inset 4px 4px 8px rgba(255, 255, 255, 0.4), inset -4px -4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-clayPressed: inset 10px 10px 20px #d9d4e3, inset -10px -10px 20px #ffffff;
+  --shadow-clayDeep: 30px 30px 60px #cdc6d9, -30px -30px 60px #ffffff, inset 10px 10px 20px rgba(139, 92, 246, 0.05), inset -10px -10px 20px rgba(255, 255, 255, 0.8);
+
+  --animate-clay-float: clay-float 8s ease-in-out infinite;
+  --animate-clay-float-delayed: clay-float-delayed 10s ease-in-out infinite;
+  --animate-clay-float-slow: clay-float-slow 12s ease-in-out infinite;
+  --animate-clay-breathe: clay-breathe 6s ease-in-out infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@keyframes clay-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes clay-float-delayed {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(-2deg); }
+}
+
+@keyframes clay-float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(5deg); }
+}
+
+@keyframes clay-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+/* Utilities for animation delays since Tailwind v4 doesn't have it built-in elegantly for arbitrary values yet */
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Gradient Text utility */
+.clay-text-gradient {
+  background: linear-gradient(to bottom right, var(--color-clay-foreground) 20%, var(--color-clay-accent) 60%, var(--color-clay-accent-alt));
+  -webkit-background-clip: text;
+  color: transparent;
 }
