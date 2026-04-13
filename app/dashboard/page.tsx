@@ -24,10 +24,13 @@ import {
   Stethoscope,
   Heart
 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { FloatingActionButton } from "../../components/FloatingActionButton";
 
 type Tab = "Beranda" | "Cek" | "Jurnal" | "Edukasi" | "Profil";
 
 export default function DashboardPage() {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<Tab>("Beranda");
   const [missions, setMissions] = useState([
     { id: 1, text: "Minum air (8/8 gelas)", done: true },
@@ -40,8 +43,25 @@ export default function DashboardPage() {
   };
 
   return (
-    <main className="relative min-h-screen bg-clay-canvas pb-28">
+    <main className="relative min-h-screen bg-clay-canvas pb-28 overflow-x-hidden">
       <BackgroundBlobs />
+      
+      {/* Floating Action Button */}
+      {activeTab === "Beranda" && (
+        <FloatingActionButton 
+          icon={MessageSquare} 
+          label="Tanya HepaBot" 
+          onClick={() => router.push('/dashboard/hepabot')} 
+        />
+      )}
+
+      {activeTab === "Jurnal" && (
+        <FloatingActionButton 
+          icon={Plus} 
+          label="Tulis Jurnal" 
+          onClick={() => router.push('/dashboard/jurnal')} 
+        />
+      )}
       
       {/* Scrollable Content Area */}
       <div className="mx-auto max-w-lg px-4 pt-10">
@@ -102,7 +122,7 @@ export default function DashboardPage() {
             </div>
 
             {/* Quick Insight Cards (Horizontal) */}
-            <div className="mb-8 -mx-4">
+            <div className="mb-14 -mx-4">
                <div className="px-6 mb-4">
                  <h3 className="font-heading text-xl font-bold">Insight Cepat</h3>
                </div>
@@ -121,22 +141,6 @@ export default function DashboardPage() {
                   </div>
                </div>
             </div>
-
-            {/* Quick Journal & AI Assistant */}
-            <div className="grid grid-cols-2 gap-4 mb-10">
-               <ClayCard glass className="!p-6 flex flex-col items-center justify-center text-center group cursor-pointer">
-                  <div className="w-12 h-12 rounded-2xl bg-clay-accent/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                     <Plus className="text-clay-accent" />
-                  </div>
-                  <span className="text-sm font-black">Tulis Jurnal</span>
-               </ClayCard>
-               <ClayCard glass className="!p-6 flex flex-col items-center justify-center text-center border-2 border-clay-accent/20 group cursor-pointer">
-                  <div className="w-12 h-12 rounded-2xl bg-clay-accent flex items-center justify-center mb-3 shadow-clayButton group-hover:scale-110 transition-transform">
-                     <MessageSquare className="text-white" />
-                  </div>
-                  <span className="text-sm font-black text-clay-accent">Tanya HepaBot</span>
-               </ClayCard>
-            </div>
           </div>
         )}
 
@@ -148,7 +152,7 @@ export default function DashboardPage() {
             </div>
             
             <div className="space-y-6">
-              <ClayCard className="group cursor-pointer">
+              <ClayCard className="group cursor-pointer" onClick={() => router.push('/register')}>
                 <div className="flex gap-6 items-center">
                   <div className="w-20 h-20 shrink-0 rounded-[28px] bg-gradient-to-br from-[#A78BFA] to-[#7C3AED] flex items-center justify-center shadow-clayButton group-hover:scale-105 transition-transform">
                     <Activity className="h-10 w-10 text-white" />
@@ -161,7 +165,7 @@ export default function DashboardPage() {
                 <ClayButton className="mt-8 w-full">Mulai Cek</ClayButton>
               </ClayCard>
 
-              <ClayCard className="group cursor-pointer">
+              <ClayCard className="group cursor-pointer" onClick={() => router.push('/register')}>
                 <div className="flex gap-6 items-center">
                   <div className="w-20 h-20 shrink-0 rounded-[28px] bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center shadow-clayButton group-hover:scale-105 transition-transform">
                     <Heart className="h-10 w-10 text-white" />
@@ -196,19 +200,15 @@ export default function DashboardPage() {
                  { day: "Kemarin", text: "Makan malam dengan salad dan protein tinggi.", time: "19:45" },
                  { day: "12 Apr", text: "Selesai lari pagi 5km. Semangat!", time: "07:15" },
                ].map((item, i) => (
-                 <div key={i} className="bg-white/60 p-6 rounded-[32px] shadow-clayCard backdrop-blur-md flex flex-col">
-                    <div className="flex justify-between mb-2">
+                 <div key={i} onClick={() => router.push('/dashboard/jurnal')} className="bg-white/60 p-6 rounded-[32px] shadow-clayCard backdrop-blur-md flex flex-col cursor-pointer hover:bg-white/80 transition-all">
+                    <div className="flex justify-between mb-2 pointer-events-none">
                        <span className="text-xs font-black text-clay-accent">{item.day}</span>
                        <span className="text-xs font-bold text-clay-muted">{item.time}</span>
                     </div>
-                    <p className="font-bold text-clay-foreground">{item.text}</p>
+                    <p className="font-bold text-clay-foreground pointer-events-none">{item.text}</p>
                  </div>
                ))}
             </div>
-
-            <button className="fixed bottom-32 right-8 w-16 h-16 rounded-full bg-clay-accent text-white flex items-center justify-center shadow-clayButton z-20 hover:scale-110 active:scale-95 transition-all">
-               <Plus size={32} />
-            </button>
           </div>
         )}
 

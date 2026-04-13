@@ -6,7 +6,27 @@ import { ClayCard } from "../../components/ClayCard";
 import { ClayButton } from "../../components/ClayButton";
 import { ClayInput } from "../../components/ClayInput";
 import { BackgroundBlobs } from "../../components/BackgroundBlobs";
-import { ArrowLeft, ArrowRight, Check, Activity, HeartPulse } from "lucide-react";
+import { 
+  ArrowLeft, 
+  ArrowRight, 
+  Check, 
+  Activity, 
+  HeartPulse,
+  User,
+  Mail,
+  Lock,
+  Calendar,
+  Users,
+  Ruler,
+  Scale,
+  Wine,
+  Cigarette,
+  Dumbbell,
+  Stethoscope,
+  Heart,
+  PlusCircle,
+  ShieldCheck
+} from "lucide-react";
 
 type UserData = {
   nama: string; email: string; pass: string; dob: string;
@@ -97,37 +117,52 @@ export default function RegisterWizard() {
           <ClayCard className="flex flex-col !p-10 duration-500">
              
             {step === 1 && (
-              <div className="flex flex-col justify-center items-center h-64">
+              <div className="flex flex-col justify-center items-center h-80">
+                <div className="w-16 h-16 rounded-2xl bg-clay-accent/10 flex items-center justify-center mb-6 shadow-clayPressed text-clay-accent">
+                   <User size={32} />
+                </div>
                 <h2 className="font-heading text-3xl font-bold text-center mb-8">Halo! Siapa nama lengkap Anda?</h2>
                 <ClayInput autoFocus value={data.nama} onChange={e => setData({...data, nama: e.target.value})} placeholder="Masukkan nama" />
               </div>
             )}
             
             {step === 2 && (
-              <div className="flex flex-col justify-center items-center h-64">
+              <div className="flex flex-col justify-center items-center h-80">
+                <div className="w-16 h-16 rounded-2xl bg-clay-accent/10 flex items-center justify-center mb-6 shadow-clayPressed text-clay-accent">
+                   <Mail size={32} />
+                </div>
                 <h2 className="font-heading text-3xl font-bold text-center mb-8">Halo {data.nama.split(" ")[0]}, masukkan email Anda</h2>
                 <ClayInput type="email" autoFocus value={data.email} onChange={e => setData({...data, email: e.target.value})} placeholder="contoh@email.com" />
               </div>
             )}
             
             {step === 3 && (
-              <div className="flex flex-col justify-center items-center h-64">
+              <div className="flex flex-col justify-center items-center h-80">
+                <div className="w-16 h-16 rounded-2xl bg-clay-accent/10 flex items-center justify-center mb-6 shadow-clayPressed text-clay-accent">
+                   <Lock size={32} />
+                </div>
                 <h2 className="font-heading text-3xl font-bold text-center mb-8">Buat password untuk keamanan</h2>
                 <ClayInput type="password" autoFocus value={data.pass} onChange={e => setData({...data, pass: e.target.value})} placeholder="Minimal 8 karakter" />
               </div>
             )}
             
             {step === 4 && (
-              <div className="flex flex-col justify-center items-center h-64">
+              <div className="flex flex-col justify-center items-center h-80">
+                <div className="w-16 h-16 rounded-2xl bg-clay-accent/10 flex items-center justify-center mb-6 shadow-clayPressed text-clay-accent">
+                   <Calendar size={32} />
+                </div>
                 <h2 className="font-heading text-3xl font-bold text-center mb-8">Kapan tanggal lahir Anda?</h2>
                 <ClayInput type="date" value={data.dob} onChange={e => setData({...data, dob: e.target.value})} />
               </div>
             )}
             
             {step === 5 && (
-               <div className="flex flex-col h-64 justify-center">
+               <div className="flex flex-col h-80 justify-center items-center">
+                 <div className="w-16 h-16 rounded-2xl bg-clay-accent/10 flex items-center justify-center mb-6 shadow-clayPressed text-clay-accent">
+                   <Users size={32} />
+                 </div>
                  <h2 className="font-heading text-3xl font-bold text-center mb-8">Apa jenis kelamin Anda?</h2>
-                 <div className="space-y-4">
+                 <div className="space-y-4 w-full">
                    {["Laki-laki", "Perempuan", "Tidak ingin menyebutkan"].map(opt => (
                      <button key={opt} onClick={() => setData({...data, gender: opt})} className={`w-full py-4 rounded-2xl font-bold transition-all ${data.gender === opt ? 'bg-clay-accent text-white shadow-clayButton' : 'bg-[#EFEBF5] text-clay-muted shadow-clayPressed'}`}>{opt}</button>
                    ))}
@@ -136,7 +171,10 @@ export default function RegisterWizard() {
             )}
 
             {step === 6 && (
-               <div className="flex flex-col h-64 justify-center items-center">
+               <div className="flex flex-col h-80 justify-center items-center">
+                 <div className="w-16 h-16 rounded-2xl bg-clay-accent/10 flex items-center justify-center mb-6 shadow-clayPressed text-clay-accent">
+                   <Ruler size={32} />
+                 </div>
                  <h2 className="font-heading text-3xl font-bold text-center mb-8">Berapa tinggi badan Anda?</h2>
                  <div className="relative w-full">
                     <ClayInput type="number" autoFocus value={data.height} onChange={e => setData({...data, height: e.target.value})} placeholder="Misal: 170" />
@@ -146,7 +184,10 @@ export default function RegisterWizard() {
             )}
 
             {step === 7 && (
-               <div className="flex flex-col h-64 justify-center items-center">
+               <div className="flex flex-col h-80 justify-center items-center">
+                 <div className="w-16 h-16 rounded-2xl bg-clay-accent/10 flex items-center justify-center mb-6 shadow-clayPressed text-clay-accent">
+                   <Scale size={32} />
+                 </div>
                  <h2 className="font-heading text-3xl font-bold text-center mb-8">Berapa berat badan Anda?</h2>
                  <div className="relative w-full">
                     <ClayInput type="number" autoFocus value={data.weight} onChange={e => setData({...data, weight: e.target.value})} placeholder="Misal: 65" />
@@ -156,9 +197,12 @@ export default function RegisterWizard() {
             )}
 
             {step === 8 && (
-               <div className="flex flex-col h-64 justify-center">
+               <div className="flex flex-col h-[400px] justify-center items-center">
+                 <div className="w-16 h-16 rounded-2xl bg-clay-accent/10 flex items-center justify-center mb-6 shadow-clayPressed text-clay-accent">
+                   <Wine size={32} />
+                 </div>
                  <h2 className="font-heading text-2xl font-bold text-center mb-6">Seberapa sering Anda mengonsumsi alkohol?</h2>
-                 <div className="space-y-4">
+                 <div className="space-y-4 w-full">
                    {["Tidak pernah", "Kadang-kadang", "Sering"].map(opt => (
                      <button key={opt} onClick={() => setData({...data, alcohol: opt})} className={`w-full py-4 rounded-2xl font-bold transition-all ${data.alcohol === opt ? 'bg-clay-accent text-white shadow-clayButton' : 'bg-[#EFEBF5] text-clay-muted shadow-clayPressed'}`}>{opt}</button>
                    ))}
@@ -167,9 +211,12 @@ export default function RegisterWizard() {
             )}
 
             {step === 9 && (
-               <div className="flex flex-col h-64 justify-center">
+               <div className="flex flex-col h-80 justify-center items-center">
+                 <div className="w-16 h-16 rounded-2xl bg-clay-accent/10 flex items-center justify-center mb-6 shadow-clayPressed text-clay-accent">
+                   <Cigarette size={32} />
+                 </div>
                  <h2 className="font-heading text-3xl font-bold text-center mb-8">Apakah Anda merokok?</h2>
-                 <div className="flex gap-4">
+                 <div className="flex gap-4 w-full">
                    {["Ya", "Tidak"].map(opt => (
                      <button key={opt} onClick={() => setData({...data, smoke: opt})} className={`w-full py-4 rounded-2xl font-bold transition-all ${data.smoke === opt ? 'bg-clay-accent text-white shadow-clayButton' : 'bg-[#EFEBF5] text-clay-muted shadow-clayPressed'}`}>{opt}</button>
                    ))}
@@ -178,9 +225,12 @@ export default function RegisterWizard() {
             )}
 
             {step === 10 && (
-               <div className="flex flex-col h-64 justify-center">
+               <div className="flex flex-col h-[400px] justify-center items-center">
+                 <div className="w-16 h-16 rounded-2xl bg-clay-accent/10 flex items-center justify-center mb-6 shadow-clayPressed text-clay-accent">
+                   <Dumbbell size={32} />
+                 </div>
                  <h2 className="font-heading text-2xl font-bold text-center mb-6">Seberapa aktif aktivitas fisik Anda?</h2>
-                 <div className="space-y-4">
+                 <div className="space-y-4 w-full">
                    {["Rendah", "Sedang", "Tinggi"].map(opt => (
                      <button key={opt} onClick={() => setData({...data, activity: opt})} className={`w-full py-4 rounded-2xl font-bold transition-all ${data.activity === opt ? 'bg-clay-accent text-white shadow-clayButton' : 'bg-[#EFEBF5] text-clay-muted shadow-clayPressed'}`}>{opt}</button>
                    ))}
@@ -189,9 +239,12 @@ export default function RegisterWizard() {
             )}
 
             {step === 11 && (
-               <div className="flex flex-col h-72 justify-center">
+               <div className="flex flex-col h-[400px] justify-center items-center">
+                 <div className="w-16 h-16 rounded-2xl bg-clay-accent/10 flex items-center justify-center mb-6 shadow-clayPressed text-clay-accent">
+                   <Stethoscope size={32} />
+                 </div>
                  <h2 className="font-heading text-2xl font-bold text-center mb-6">Apakah Anda pernah didiagnosis penyakit hati?</h2>
-                 <div className="grid grid-cols-2 gap-4">
+                 <div className="grid grid-cols-2 gap-4 w-full">
                    {["Hepatitis", "Fatty Liver", "Sirosis", "Tidak ada"].map(opt => {
                      const active = data.liverHistory.includes(opt);
                      return (
@@ -203,9 +256,12 @@ export default function RegisterWizard() {
             )}
 
             {step === 12 && (
-               <div className="flex flex-col h-64 justify-center">
+               <div className="flex flex-col h-80 justify-center items-center">
+                 <div className="w-16 h-16 rounded-2xl bg-clay-accent/10 flex items-center justify-center mb-6 shadow-clayPressed text-clay-accent">
+                   <Heart size={32} />
+                 </div>
                  <h2 className="font-heading text-2xl font-bold text-center mb-8">Apakah ada riwayat penyakit hati dalam keluarga Anda?</h2>
-                 <div className="flex gap-4">
+                 <div className="flex gap-4 w-full">
                    {["Ya", "Tidak"].map(opt => (
                      <button key={opt} onClick={() => setData({...data, familyHistory: opt})} className={`w-full py-4 rounded-2xl font-bold transition-all ${data.familyHistory === opt ? 'bg-clay-accent text-white shadow-clayButton' : 'bg-[#EFEBF5] text-clay-muted shadow-clayPressed'}`}>{opt}</button>
                    ))}
@@ -214,9 +270,12 @@ export default function RegisterWizard() {
             )}
 
             {step === 13 && (
-               <div className="flex flex-col h-72 justify-center">
+               <div className="flex flex-col h-[400px] justify-center items-center">
+                 <div className="w-16 h-16 rounded-2xl bg-clay-accent/10 flex items-center justify-center mb-6 shadow-clayPressed text-clay-accent">
+                   <PlusCircle size={32} />
+                 </div>
                  <h2 className="font-heading text-2xl font-bold text-center mb-6">Apakah Anda memiliki kondisi berikut?</h2>
-                 <div className="grid gap-4">
+                 <div className="grid gap-4 w-full">
                    {["Diabetes", "Kolesterol tinggi", "Tidak ada"].map(opt => {
                      const active = data.otherConditions.includes(opt);
                      return (
@@ -228,8 +287,10 @@ export default function RegisterWizard() {
             )}
 
             {step === 14 && (
-               <div className="flex flex-col h-72 justify-center items-center text-center">
-                 <ShieldCheckIcon className="h-16 w-16 text-clay-success mb-6" />
+               <div className="flex flex-col h-80 justify-center items-center text-center">
+                 <div className="w-16 h-16 rounded-2xl bg-clay-success/10 flex items-center justify-center mb-6 shadow-clayPressed text-clay-success">
+                   <ShieldCheck size={32} />
+                 </div>
                  <h2 className="font-heading text-2xl font-bold mb-4">Persetujuan Keamanan</h2>
                  <p className="text-clay-muted mb-6">Sistem menggunakan data yang baru diberikan untuk melakukan evaluasi kecerdasan buatan.</p>
                  <label className="flex items-center gap-3 cursor-pointer select-none">
