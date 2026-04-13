@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { ClayButton } from "../components/ClayButton";
 import { ClayCard } from "../components/ClayCard";
 import { BackgroundBlobs } from "../components/BackgroundBlobs";
@@ -38,7 +39,10 @@ export default function Home() {
           <div className="hidden md:flex items-center gap-8">
             <a href="#features" className="font-bold text-clay-muted hover:text-clay-accent transition-colors duration-200">Fitur</a>
             <a href="#about" className="font-bold text-clay-muted hover:text-clay-accent transition-colors duration-200">Tentang</a>
-            <ClayButton size="sm">Coba Gratis</ClayButton>
+            <Link href="/login" className="font-bold text-clay-foreground hover:text-clay-accent transition-colors duration-200">Login</Link>
+            <Link href="/register">
+              <ClayButton size="sm">Coba Gratis</ClayButton>
+            </Link>
           </div>
         </div>
       </nav>
@@ -60,13 +64,22 @@ export default function Home() {
             Pantau kesehatan hati secara mandiri dan komprehensif. HepaCare menggunakan teknologi AI untuk merawat Anda setiap hari.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full sm:w-auto">
-            <ClayButton size="lg" className="w-full sm:w-auto">
-              Mulai Pantau Sekarang
-            </ClayButton>
-            <ClayButton variant="secondary" size="lg" className="w-full sm:w-auto text-clay-accent">
-              Pelajari Fitur
-            </ClayButton>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full sm:w-auto mt-4">
+            <Link href="/register" className="w-full sm:w-auto">
+              <ClayButton size="lg" className="w-full sm:w-auto">
+                Mulai Pantau Sekarang
+              </ClayButton>
+            </Link>
+            
+            <div className="group relative w-full sm:w-auto">
+              <ClayButton variant="secondary" size="lg" className="w-full sm:w-auto text-clay-accent cursor-not-allowed">
+                Pelajari Fitur
+              </ClayButton>
+              <div className="pointer-events-none absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-xl bg-clay-foreground px-4 py-2 text-sm font-bold text-white shadow-clayButton opacity-0 transition-opacity group-hover:opacity-100">
+                Segera Hadir!
+                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 border-4 border-transparent border-t-clay-foreground"></div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

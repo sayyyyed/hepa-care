@@ -322,7 +322,7 @@ export default function RegisterWizard() {
               <ClayCard className="snap-center shrink-0 w-[300px] sm:w-[350px] !p-10 flex flex-col items-center justify-center text-center bg-gradient-to-br from-[#7C3AED]/10 to-[#DB2777]/5 border-2 border-clay-accent/20">
                  <h3 className="font-heading text-3xl font-bold mb-6">Siap Melangkah?</h3>
                  <p className="text-clay-muted mb-8">Masuk ke dalam dashboard cerdas Anda sekarang juga untuk rekam jejak harian.</p>
-                 <Link href="/">
+                 <Link href="/dashboard">
                     <ClayButton size="lg" className="w-full">Lihat Dashboard Utama</ClayButton>
                  </Link>
               </ClayCard>

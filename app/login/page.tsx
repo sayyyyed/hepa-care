@@ -41,9 +41,11 @@ export default function LoginPage() {
               <a href="#" className="text-sm font-bold text-clay-accent hover:underline">Lupa Password?</a>
             </div>
             
-            <ClayButton type="button" className="w-full mt-2">
-              Masuk
-            </ClayButton>
+            <Link href="/dashboard" className="w-full mt-2">
+              <ClayButton type="button" className="w-full">
+                Masuk
+              </ClayButton>
+            </Link>
           </form>
 
           <div className="mt-8 text-center text-clay-muted font-medium">
