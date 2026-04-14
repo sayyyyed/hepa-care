@@ -152,7 +152,7 @@ export default function DashboardPage() {
             </div>
 
             <div className="space-y-6">
-              <ClayCard className="group cursor-pointer" onClick={() => router.push('/register')}>
+              <ClayCard className="group cursor-pointer" onClick={() => router.push('/dashboard/cek-risiko')}>
                 <div className="flex gap-6 items-center">
                   <div className="w-20 h-20 shrink-0 rounded-[28px] bg-gradient-to-br from-[#A78BFA] to-[#7C3AED] flex items-center justify-center shadow-clayButton group-hover:scale-105 transition-transform">
                     <Activity className="h-10 w-10 text-white" />
@@ -162,10 +162,18 @@ export default function DashboardPage() {
                     <p className="text-sm text-clay-muted font-medium">Evaluasi menyeluruh risiko hepatitis, fatty liver, dan sirosis.</p>
                   </div>
                 </div>
-                <ClayButton className="mt-8 w-full">Mulai Cek</ClayButton>
+                <ClayButton 
+                  className="mt-8 w-full" 
+                  onClick={(e: React.MouseEvent) => { 
+                    e.stopPropagation(); 
+                    router.push('/dashboard/cek-risiko'); 
+                  }}
+                >
+                  Mulai Cek
+                </ClayButton>
               </ClayCard>
 
-              <ClayCard className="group cursor-pointer" onClick={() => router.push('/register')}>
+              <ClayCard className="group cursor-pointer" onClick={() => router.push('/dashboard/pola-makan')}>
                 <div className="flex gap-6 items-center">
                   <div className="w-20 h-20 shrink-0 rounded-[28px] bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center shadow-clayButton group-hover:scale-105 transition-transform">
                     <Heart className="h-10 w-10 text-white" />
@@ -175,7 +183,16 @@ export default function DashboardPage() {
                     <p className="text-sm text-clay-muted font-medium">Rekomendasi nutrisi harian yang ramah untuk hati Anda.</p>
                   </div>
                 </div>
-                <ClayButton variant="secondary" className="mt-8 w-full text-clay-success">Buka Analisis</ClayButton>
+                <ClayButton 
+                  variant="secondary" 
+                  className="mt-8 w-full text-clay-success"
+                  onClick={(e: React.MouseEvent) => {
+                    e.stopPropagation();
+                    router.push('/dashboard/pola-makan');
+                  }}
+                >
+                  Buka Analisis
+                </ClayButton>
               </ClayCard>
             </div>
           </div>

@@ -29,13 +29,13 @@ export default function AdminDashboard() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-800">Selamat pagi, Dr. Sarah!</h1>
-          <p className="text-slate-500 mt-1">Berikut adalah ringkasan klinis Anda hari ini.</p>
+          <h1 className="text-xl md:text-2xl font-bold text-slate-800">Selamat pagi, Dr. Sarah!</h1>
+          <p className="text-sm text-slate-500 mt-1">Berikut adalah ringkasan klinis Anda hari ini.</p>
         </div>
         <div className="flex gap-3">
-          <button className="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-xl font-medium hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-600/20">
+          <button className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-indigo-600 text-white px-4 py-2.5 rounded-xl font-medium hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-600/20 text-sm">
             <Plus size={18} />
             <span>Tambah Artikel</span>
           </button>
@@ -74,23 +74,23 @@ export default function AdminDashboard() {
             </div>
             <div className="space-y-4">
               {recentActivity.map((activity) => (
-                <div key={activity.id} className="flex items-center gap-4 p-4 rounded-xl border border-slate-50 hover:border-indigo-100 transition-colors group">
+                <div key={activity.id} className="flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-xl border border-slate-50 hover:border-indigo-100 transition-colors group">
                   <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
                     <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${activity.patient}`} alt="" className="w-8 h-8" />
                   </div>
-                  <div className="flex-1">
-                    <p className="text-sm font-semibold text-slate-800">
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold text-slate-800 truncate sm:whitespace-normal">
                       {activity.patient} <span className="font-normal text-slate-500">{activity.action}</span>
                     </p>
-                    <p className="text-xs text-slate-400 mt-1">{activity.time}</p>
+                    <p className="text-[10px] md:text-xs text-slate-400 mt-1">{activity.time}</p>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md ${
+                  <div className="flex items-center gap-2 md:gap-3 shrink-0">
+                    <span className={`hidden xs:block text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md ${
                       activity.type === 'update' ? "bg-amber-50 text-amber-600" : "bg-blue-50 text-blue-600"
                     }`}>
                       {activity.status}
                     </span>
-                    <button className="opacity-0 group-hover:opacity-100 p-2 text-slate-400 hover:text-indigo-600 transition-all">
+                    <button className="opacity-100 sm:opacity-0 group-hover:opacity-100 p-2 text-slate-400 hover:text-indigo-600 transition-all">
                       <ArrowUpRight size={18} />
                     </button>
                   </div>

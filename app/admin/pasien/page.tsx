@@ -8,7 +8,8 @@ import {
   ChevronRight, 
   MoreHorizontal,
   ChevronLeft,
-  ChevronRight as ChevronRightIcon
+  ChevronRight as ChevronRightIcon,
+  Download
 } from "lucide-react";
 import Link from "next/link";
 
@@ -44,42 +45,43 @@ export default function PatientsPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-slate-800">Pasien Saya</h1>
-          <p className="text-slate-500 mt-1">Kelola dan pantau data kesehatan semua pasien Anda.</p>
+          <p className="text-slate-500 mt-1 text-sm md:text-base">Kelola dan pantau data kesehatan semua pasien Anda.</p>
         </div>
-        <div className="flex items-center gap-3">
-          <button className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-xl text-slate-600 font-medium hover:bg-slate-50 transition-colors">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <button className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-2 bg-white border border-slate-200 rounded-xl text-slate-600 font-medium hover:bg-slate-50 transition-colors text-sm">
             <Filter size={18} />
-            <span>Filter</span>
+            <span className="hidden sm:inline">Filter</span>
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-600/20">
-            <span>Export Data</span>
+          <button className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-2 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-600/20 text-sm">
+            <Download size={18} className="sm:hidden" />
+            <span>Export <span className="hidden sm:inline">Data</span></span>
           </button>
         </div>
       </div>
 
       {/* Table Card */}
       <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden text-slate-500">
-        <div className="p-4 border-b border-slate-100 flex items-center justify-between bg-white">
+        <div className="p-4 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white">
           <div className="relative w-full max-w-sm">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4" />
             <input 
               type="text" 
-              placeholder="Cari nama atau ID pasien..." 
+              placeholder="Cari nama pasien..." 
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full bg-slate-50 border border-slate-200 rounded-lg py-2 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-slate-700"
             />
           </div>
           <div className="flex items-center gap-2">
-             <span className="text-sm">Menampilkan 1-8 dari 1,284 pasien</span>
+             <span className="text-xs md:text-sm">Menampilkan 1-8 dari 1,284 pasien</span>
           </div>
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse">
+          <table className="w-full text-left border-collapse min-w-[600px] md:min-w-full">
             <thead>
               <tr className="bg-slate-50/50">
                 <th className="px-6 py-4 text-sm font-bold text-slate-700">
@@ -87,9 +89,9 @@ export default function PatientsPage() {
                     Nama Pasien <ArrowUpDown size={14} />
                   </div>
                 </th>
-                <th className="px-6 py-4 text-sm font-bold text-slate-700">Umur</th>
+                <th className="hidden lg:table-cell px-6 py-4 text-sm font-bold text-slate-700">Umur</th>
                 <th className="px-6 py-4 text-sm font-bold text-slate-700">Status Risiko</th>
-                <th className="px-6 py-4 text-sm font-bold text-slate-700">Terakhir Update</th>
+                <th className="hidden md:table-cell px-6 py-4 text-sm font-bold text-slate-700">Terakhir Update</th>
                 <th className="px-6 py-4 text-sm font-bold text-slate-700">Status</th>
                 <th className="px-6 py-4 text-sm font-bold text-slate-700 text-center">Aksi</th>
               </tr>
@@ -99,33 +101,36 @@ export default function PatientsPage() {
                 <tr key={patient.id} className="hover:bg-slate-50/50 transition-colors group cursor-pointer">
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center">
+                      <div className="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
                         <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${patient.name}`} alt="" className="w-7 h-7" />
                       </div>
-                      <span className="font-semibold text-slate-800">{patient.name}</span>
+                      <div>
+                        <p className="font-semibold text-slate-800">{patient.name}</p>
+                        <p className="lg:hidden text-[10px] text-slate-400">{patient.age} Thn</p>
+                      </div>
                     </div>
                   </td>
-                  <td className="px-6 py-4 text-sm text-slate-600">{patient.age} Tahun</td>
+                  <td className="hidden lg:table-cell px-6 py-4 text-sm text-slate-600">{patient.age} Tahun</td>
                   <td className="px-6 py-4">
-                    <span className={`text-xs font-bold px-2.5 py-1 rounded-full border ${getRiskColor(patient.risk)}`}>
+                    <span className={`text-[10px] md:text-xs font-bold px-2 md:px-2.5 py-1 rounded-full border ${getRiskColor(patient.risk)}`}>
                       {patient.risk}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-sm text-slate-600">{patient.lastUpdate}</td>
+                  <td className="hidden md:table-cell px-6 py-4 text-sm text-slate-600">{patient.lastUpdate}</td>
                   <td className="px-6 py-4">
-                    <span className={`text-sm font-medium flex items-center gap-2 before:w-1.5 before:h-1.5 before:rounded-full ${getStatusColor(patient.status)}`}>
+                    <span className={`text-xs md:text-sm font-medium flex items-center gap-2 before:w-1.5 before:h-1.5 before:rounded-full ${getStatusColor(patient.status)}`}>
                       {patient.status}
                     </span>
                   </td>
                   <td className="px-6 py-4">
-                    <div className="flex items-center justify-center gap-2">
+                    <div className="flex items-center justify-center gap-1 md:gap-2">
                        <Link 
                         href={`/admin/pasien/${patient.id}`}
                         className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all"
                        >
                          <ChevronRight size={18} />
                        </Link>
-                       <button className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-all">
+                       <button className="hidden sm:block p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-all">
                          <MoreHorizontal size={18} />
                        </button>
                     </div>
@@ -137,23 +142,23 @@ export default function PatientsPage() {
         </div>
 
         {/* Pagination */}
-        <div className="p-4 border-t border-slate-100 flex items-center justify-between">
+        <div className="p-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <button className="p-2 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-400 disabled:opacity-50" disabled>
               <ChevronLeft size={18} />
             </button>
             <div className="flex items-center gap-1">
-               <button className="w-9 h-9 flex items-center justify-center rounded-lg bg-indigo-600 text-white font-bold text-sm">1</button>
-               <button className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-slate-50 text-slate-600 font-medium text-sm">2</button>
-               <button className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-slate-50 text-slate-600 font-medium text-sm">3</button>
+               <button className="w-8 h-8 md:w-9 md:h-9 flex items-center justify-center rounded-lg bg-indigo-600 text-white font-bold text-sm">1</button>
+               <button className="w-8 h-8 md:w-9 md:h-9 flex items-center justify-center rounded-lg hover:bg-slate-50 text-slate-600 font-medium text-sm">2</button>
+               <button className="hidden md:flex w-9 h-9 items-center justify-center rounded-lg hover:bg-slate-50 text-slate-600 font-medium text-sm">3</button>
                <span className="px-1 text-slate-400">...</span>
-               <button className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-slate-50 text-slate-600 font-medium text-sm">160</button>
+               <button className="w-8 h-8 md:w-9 md:h-9 flex items-center justify-center rounded-lg hover:bg-slate-50 text-slate-600 font-medium text-sm">160</button>
             </div>
             <button className="p-2 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-400">
               <ChevronRightIcon size={18} />
             </button>
           </div>
-          <p className="text-sm text-slate-500">Hal 1 dari 160</p>
+          <p className="text-xs md:text-sm text-slate-500 order-first sm:order-last">Halaman 1 dari 160</p>
         </div>
       </div>
     </div>
