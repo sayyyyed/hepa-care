@@ -71,15 +71,11 @@ export default function Home() {
               </ClayButton>
             </Link>
             
-            <div className="group relative w-full sm:w-auto">
-              <ClayButton variant="secondary" size="lg" className="w-full sm:w-auto text-clay-accent cursor-not-allowed">
+            <Link href="/pelajari-fitur" className="w-full sm:w-auto">
+              <ClayButton variant="secondary" size="lg" className="w-full sm:w-auto text-clay-accent">
                 Pelajari Fitur
               </ClayButton>
-              <div className="pointer-events-none absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-xl bg-clay-foreground px-4 py-2 text-sm font-bold text-white shadow-clayButton opacity-0 transition-opacity group-hover:opacity-100">
-                Segera Hadir!
-                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 border-4 border-transparent border-t-clay-foreground"></div>
-              </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
