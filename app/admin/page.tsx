@@ -27,71 +27,71 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-8">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-heading font-black text-clay-foreground tracking-tight">Selamat pagi, Dr. Sarah!</h1>
-          <p className="text-clay-muted font-medium mt-1">Berikut adalah ringkasan klinis Anda hari ini.</p>
+          <h1 className="text-2xl font-bold text-slate-800">Selamat pagi, Dr. Sarah!</h1>
+          <p className="text-slate-500 mt-1">Berikut adalah ringkasan klinis Anda hari ini.</p>
         </div>
-        <div className="flex gap-4">
-          <button className="flex items-center gap-2 bg-gradient-to-br from-[#A78BFA] to-clay-accent text-white px-6 py-3 rounded-[20px] font-heading font-bold hover:-translate-y-1 transition-all shadow-clayButton hover:shadow-clayButtonHover active:scale-[0.92] active:shadow-clayPressed">
-            <Plus size={20} />
+        <div className="flex gap-3">
+          <button className="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-xl font-medium hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-600/20">
+            <Plus size={18} />
             <span>Tambah Artikel</span>
           </button>
         </div>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat, i) => (
-          <div key={i} className="bg-white p-8 rounded-[32px] border-none shadow-clayCard hover:-translate-y-2 hover:shadow-clayButtonHover transition-all duration-500 group cursor-default">
+          <div key={i} className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex items-start justify-between">
-              <div className={`p-4 rounded-2xl ${stat.color} text-white shadow-clayButton group-hover:scale-110 transition-transform duration-500`}>
-                <stat.icon size={28} />
+              <div className={`p-3 rounded-xl ${stat.color} text-white`}>
+                <stat.icon size={24} />
               </div>
-              <span className={`text-xs font-heading font-black px-3 py-1.5 rounded-full shadow-sm ${
-                stat.trend.startsWith('+') ? "text-emerald-600 bg-emerald-50" : stat.trend.startsWith('-') ? "text-red-600 bg-red-50" : "text-clay-muted bg-clay-canvas"
+              <span className={`text-xs font-bold px-2 py-1 rounded-full ${
+                stat.trend.startsWith('+') ? "text-emerald-600 bg-emerald-50" : stat.trend.startsWith('-') ? "text-red-600 bg-red-50" : "text-slate-500 bg-slate-50"
               }`}>
                 {stat.trend}
               </span>
             </div>
-            <div className="mt-6">
-              <h3 className="text-clay-muted text-sm font-heading font-bold uppercase tracking-widest">{stat.label}</h3>
-              <p className="text-3xl font-heading font-black text-clay-foreground mt-1">{stat.value}</p>
+            <div className="mt-4">
+              <h3 className="text-slate-500 text-sm font-medium">{stat.label}</h3>
+              <p className="text-2xl font-bold text-slate-800 mt-1">{stat.value}</p>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Recent Activity */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-white/70 backdrop-blur-xl rounded-[32px] border-none shadow-clayCard p-8">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-xl font-heading font-black text-clay-foreground">Aktivitas Terbaru</h2>
-              <button className="text-clay-accent text-sm font-heading font-bold hover:underline underline-offset-4">Lihat semua</button>
+          <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-lg font-bold text-slate-800">Aktivitas Terbaru</h2>
+              <button className="text-indigo-600 text-sm font-medium hover:underline">Lihat semua</button>
             </div>
-            <div className="space-y-5">
+            <div className="space-y-4">
               {recentActivity.map((activity) => (
-                <div key={activity.id} className="flex items-center gap-5 p-5 rounded-[24px] bg-white/40 border border-white/50 hover:bg-white hover:-translate-y-1 hover:shadow-clayCard transition-all duration-300 group cursor-pointer">
-                  <div className="w-14 h-14 rounded-2xl bg-white shadow-clayCard flex items-center justify-center shrink-0 border-2 border-white overflow-hidden group-hover:scale-110 transition-transform">
-                    <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${activity.patient}`} alt="" className="w-12 h-12" />
+                <div key={activity.id} className="flex items-center gap-4 p-4 rounded-xl border border-slate-50 hover:border-indigo-100 transition-colors group">
+                  <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
+                    <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${activity.patient}`} alt="" className="w-8 h-8" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-base font-heading font-bold text-clay-foreground">
-                      {activity.patient} <span className="font-sans font-medium text-clay-muted">{activity.action}</span>
+                    <p className="text-sm font-semibold text-slate-800">
+                      {activity.patient} <span className="font-normal text-slate-500">{activity.action}</span>
                     </p>
-                    <p className="text-xs font-sans font-bold text-clay-muted/60 mt-1 uppercase tracking-wider">{activity.time}</p>
+                    <p className="text-xs text-slate-400 mt-1">{activity.time}</p>
                   </div>
-                  <div className="flex items-center gap-4">
-                    <span className={`text-[10px] font-heading font-black uppercase tracking-widest px-3 py-1.5 rounded-xl shadow-sm ${
-                      activity.type === 'update' ? "bg-amber-50 text-amber-600 border border-amber-100" : "bg-blue-50 text-blue-600 border border-blue-100"
+                  <div className="flex items-center gap-3">
+                    <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md ${
+                      activity.type === 'update' ? "bg-amber-50 text-amber-600" : "bg-blue-50 text-blue-600"
                     }`}>
                       {activity.status}
                     </span>
-                    <button className="opacity-0 group-hover:opacity-100 p-2 text-clay-muted hover:text-clay-accent transition-all hover:bg-clay-accent/10 rounded-xl">
-                      <ArrowUpRight size={20} />
+                    <button className="opacity-0 group-hover:opacity-100 p-2 text-slate-400 hover:text-indigo-600 transition-all">
+                      <ArrowUpRight size={18} />
                     </button>
                   </div>
                 </div>
@@ -101,46 +101,46 @@ export default function AdminDashboard() {
         </div>
 
         {/* Quick Actions */}
-        <div className="space-y-8">
-          <div className="bg-white/70 backdrop-blur-xl rounded-[32px] border-none shadow-clayCard p-8 h-full">
-            <h2 className="text-xl font-heading font-black text-clay-foreground mb-8">Aksi Cepat</h2>
-            <div className="space-y-4">
-              <button className="w-full flex items-center gap-4 p-5 rounded-[24px] bg-white/50 border border-white/80 hover:bg-white hover:-translate-y-1 hover:shadow-clayCard transition-all duration-300 text-left active:scale-[0.95] active:shadow-clayPressed group">
-                <div className="p-3 bg-indigo-100 text-indigo-600 rounded-2xl shadow-sm group-hover:scale-110 transition-transform">
-                  <MessageCircle size={24} />
+        <div className="space-y-6">
+          <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 h-full">
+            <h2 className="text-lg font-bold text-slate-800 mb-6">Aksi Cepat</h2>
+            <div className="space-y-3">
+              <button className="w-full flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:border-indigo-200 hover:bg-indigo-50/30 transition-all text-left">
+                <div className="p-2 bg-indigo-100 text-indigo-600 rounded-lg">
+                  <MessageCircle size={20} />
                 </div>
                 <div>
-                  <p className="text-sm font-heading font-black text-clay-foreground">Mulai Konsultasi</p>
-                  <p className="text-xs font-sans font-medium text-clay-muted">Hubungi pasien via chat</p>
+                  <p className="text-sm font-bold text-slate-800">Mulai Konsultasi</p>
+                  <p className="text-xs text-slate-500">Hubungi pasien via chat</p>
                 </div>
               </button>
-              <button className="w-full flex items-center gap-4 p-5 rounded-[24px] bg-white/50 border border-white/80 hover:bg-white hover:-translate-y-1 hover:shadow-clayCard transition-all duration-300 text-left active:scale-[0.95] active:shadow-clayPressed group">
-                <div className="p-3 bg-blue-100 text-blue-600 rounded-2xl shadow-sm group-hover:scale-110 transition-transform">
-                  <Eye size={24} />
+              <button className="w-full flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:border-blue-200 hover:bg-blue-50/30 transition-all text-left">
+                <div className="p-2 bg-blue-100 text-blue-600 rounded-lg">
+                  <Eye size={20} />
                 </div>
                 <div>
-                  <p className="text-sm font-heading font-black text-clay-foreground">Lihat Pasien</p>
-                  <p className="text-xs font-sans font-medium text-clay-muted">Cek daftar pasien aktif</p>
+                  <p className="text-sm font-bold text-slate-800">Lihat Pasien</p>
+                  <p className="text-xs text-slate-500">Cek daftar pasien aktif</p>
                 </div>
               </button>
-              <button className="w-full flex items-center gap-4 p-5 rounded-[24px] bg-white/50 border border-white/80 hover:bg-white hover:-translate-y-1 hover:shadow-clayCard transition-all duration-300 text-left active:scale-[0.95] active:shadow-clayPressed group">
-                <div className="p-3 bg-emerald-100 text-emerald-600 rounded-2xl shadow-sm group-hover:scale-110 transition-transform">
-                  <Plus size={24} />
+              <button className="w-full flex items-center gap-3 p-4 rounded-xl border border-slate-100 hover:border-emerald-200 hover:bg-emerald-50/30 transition-all text-left">
+                <div className="p-2 bg-emerald-100 text-emerald-600 rounded-lg">
+                  <Plus size={20} />
                 </div>
                 <div>
-                  <p className="text-sm font-heading font-black text-clay-foreground">Buat Info Kesehatan</p>
-                  <p className="text-xs font-sans font-medium text-clay-muted">Tulis artikel edukasi baru</p>
+                  <p className="text-sm font-bold text-slate-800">Buat Info Kesehatan</p>
+                  <p className="text-xs text-slate-500">Tulis artikel edukasi baru</p>
                 </div>
               </button>
             </div>
 
-            <div className="mt-10 p-6 bg-gradient-to-br from-clay-accent to-clay-accent-alt rounded-3xl text-white relative overflow-hidden shadow-clayDeep group">
+            <div className="mt-8 p-4 bg-indigo-600 rounded-xl text-white relative overflow-hidden">
                <div className="relative z-10">
-                 <p className="text-[10px] font-heading font-black uppercase tracking-widest opacity-80">Update Sistem</p>
-                 <p className="text-lg font-heading font-black mt-2 leading-tight">AI Analisis Risiko v2.4 telah aktif</p>
-                 <button className="mt-6 text-xs font-heading font-black bg-white text-clay-accent px-5 py-2.5 rounded-xl shadow-clayButton hover:shadow-clayButtonHover transition-all active:scale-90">PELAJARI</button>
+                 <p className="text-xs font-medium opacity-80">Update Sistem</p>
+                 <p className="text-sm font-bold mt-1">AI Analisis Risiko v2.4 telah aktif</p>
+                 <button className="mt-3 text-xs bg-white text-indigo-600 px-3 py-1.5 rounded-lg font-bold">Pelajari</button>
                </div>
-               <div className="absolute -right-6 -bottom-6 w-32 h-32 bg-white opacity-20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+               <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-white opacity-10 rounded-full"></div>
             </div>
           </div>
         </div>

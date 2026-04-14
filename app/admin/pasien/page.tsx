@@ -42,91 +42,91 @@ export default function PatientsPage() {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-heading font-black text-clay-foreground tracking-tight">Pasien Saya</h1>
-          <p className="text-clay-muted font-medium mt-1">Kelola dan pantau data kesehatan semua pasien Anda.</p>
+          <h1 className="text-2xl font-bold text-slate-800">Pasien Saya</h1>
+          <p className="text-slate-500 mt-1">Kelola dan pantau data kesehatan semua pasien Anda.</p>
         </div>
-        <div className="flex items-center gap-4">
-          <button className="flex items-center gap-2 px-6 py-3 bg-white text-clay-muted font-heading font-bold rounded-[20px] shadow-clayCard hover:-translate-y-1 hover:shadow-clayButtonHover transition-all active:scale-95 active:shadow-clayPressed">
+        <div className="flex items-center gap-3">
+          <button className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-xl text-slate-600 font-medium hover:bg-slate-50 transition-colors">
             <Filter size={18} />
             <span>Filter</span>
           </button>
-          <button className="flex items-center gap-2 px-6 py-3 bg-gradient-to-br from-clay-accent to-clay-accent-alt text-white rounded-[20px] font-heading font-bold shadow-clayButton hover:-translate-y-1 hover:shadow-clayButtonHover transition-all active:scale-95 active:shadow-clayPressed">
+          <button className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-600/20">
             <span>Export Data</span>
           </button>
         </div>
       </div>
 
       {/* Table Card */}
-      <div className="bg-white/70 backdrop-blur-xl rounded-[32px] border-none shadow-clayDeep overflow-hidden">
-        <div className="p-6 border-b border-clay-muted/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="relative w-full max-w-md">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-clay-muted/50 w-4 h-4" />
+      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden text-slate-500">
+        <div className="p-4 border-b border-slate-100 flex items-center justify-between bg-white">
+          <div className="relative w-full max-w-sm">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4" />
             <input 
               type="text" 
               placeholder="Cari nama atau ID pasien..." 
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-[#EFEBF5] border-none rounded-2xl py-3 pl-12 pr-4 text-sm text-clay-foreground shadow-clayPressed focus:outline-none focus:ring-4 focus:ring-clay-accent/10 focus:bg-white transition-all font-sans placeholder:text-clay-muted/50"
+              className="w-full bg-slate-50 border border-slate-200 rounded-lg py-2 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-slate-700"
             />
           </div>
           <div className="flex items-center gap-2">
-             <span className="text-xs font-heading font-bold text-clay-muted uppercase tracking-widest">Menampilkan 8 dari 1,284 pasien</span>
+             <span className="text-sm">Menampilkan 1-8 dari 1,284 pasien</span>
           </div>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-clay-canvas/50">
-                <th className="px-8 py-5 text-xs font-heading font-black text-clay-muted uppercase tracking-widest">
-                  <div className="flex items-center gap-2 cursor-pointer hover:text-clay-accent transition-colors">
+              <tr className="bg-slate-50/50">
+                <th className="px-6 py-4 text-sm font-bold text-slate-700">
+                  <div className="flex items-center gap-2 cursor-pointer hover:text-indigo-600">
                     Nama Pasien <ArrowUpDown size={14} />
                   </div>
                 </th>
-                <th className="px-8 py-5 text-xs font-heading font-black text-clay-muted uppercase tracking-widest">Umur</th>
-                <th className="px-8 py-5 text-xs font-heading font-black text-clay-muted uppercase tracking-widest">Status Risiko</th>
-                <th className="px-8 py-5 text-xs font-heading font-black text-clay-muted uppercase tracking-widest">Update Terakhir</th>
-                <th className="px-8 py-5 text-xs font-heading font-black text-clay-muted uppercase tracking-widest">Status</th>
-                <th className="px-8 py-5 text-xs font-heading font-black text-clay-muted uppercase tracking-widest text-center">Aksi</th>
+                <th className="px-6 py-4 text-sm font-bold text-slate-700">Umur</th>
+                <th className="px-6 py-4 text-sm font-bold text-slate-700">Status Risiko</th>
+                <th className="px-6 py-4 text-sm font-bold text-slate-700">Terakhir Update</th>
+                <th className="px-6 py-4 text-sm font-bold text-slate-700">Status</th>
+                <th className="px-6 py-4 text-sm font-bold text-slate-700 text-center">Aksi</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-clay-muted/5">
+            <tbody className="divide-y divide-slate-100">
               {patients.map((patient) => (
-                <tr key={patient.id} className="hover:bg-white group cursor-pointer transition-all duration-300">
-                  <td className="px-8 py-5">
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-2xl bg-white shadow-clayCard flex items-center justify-center border-2 border-white overflow-hidden group-hover:scale-110 transition-transform">
-                        <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${patient.name}`} alt="" className="w-10 h-10" />
+                <tr key={patient.id} className="hover:bg-slate-50/50 transition-colors group cursor-pointer">
+                  <td className="px-6 py-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center">
+                        <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${patient.name}`} alt="" className="w-7 h-7" />
                       </div>
-                      <span className="font-heading font-bold text-clay-foreground group-hover:text-clay-accent transition-colors">{patient.name}</span>
+                      <span className="font-semibold text-slate-800">{patient.name}</span>
                     </div>
                   </td>
-                  <td className="px-8 py-5 text-sm font-sans font-bold text-clay-muted">{patient.age} Tahun</td>
-                  <td className="px-8 py-5">
-                    <span className={`text-[10px] font-heading font-black px-4 py-1.5 rounded-full border shadow-sm uppercase tracking-widest ${getRiskColor(patient.risk)}`}>
+                  <td className="px-6 py-4 text-sm text-slate-600">{patient.age} Tahun</td>
+                  <td className="px-6 py-4">
+                    <span className={`text-xs font-bold px-2.5 py-1 rounded-full border ${getRiskColor(patient.risk)}`}>
                       {patient.risk}
                     </span>
                   </td>
-                  <td className="px-8 py-5 text-sm font-sans font-bold text-clay-muted">{patient.lastUpdate}</td>
-                  <td className="px-8 py-5">
-                    <span className={`text-xs font-heading font-bold flex items-center gap-2 before:w-2 before:h-2 before:rounded-full shadow-sm px-3 py-1.5 rounded-xl bg-white ${getStatusColor(patient.status)}`}>
+                  <td className="px-6 py-4 text-sm text-slate-600">{patient.lastUpdate}</td>
+                  <td className="px-6 py-4">
+                    <span className={`text-sm font-medium flex items-center gap-2 before:w-1.5 before:h-1.5 before:rounded-full ${getStatusColor(patient.status)}`}>
                       {patient.status}
                     </span>
                   </td>
-                  <td className="px-8 py-5">
-                    <div className="flex items-center justify-center gap-3">
+                  <td className="px-6 py-4">
+                    <div className="flex items-center justify-center gap-2">
                        <Link 
                         href={`/admin/pasien/${patient.id}`}
-                        className="p-3 text-clay-muted bg-white hover:text-clay-accent hover:shadow-clayCard rounded-xl transition-all active:scale-90"
+                        className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all"
                        >
-                         <ChevronRight size={20} />
+                         <ChevronRight size={18} />
                        </Link>
-                       <button className="p-3 text-clay-muted bg-white hover:text-clay-foreground hover:shadow-clayCard rounded-xl transition-all active:scale-90">
-                         <MoreHorizontal size={20} />
+                       <button className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-all">
+                         <MoreHorizontal size={18} />
                        </button>
                     </div>
                   </td>
@@ -137,23 +137,23 @@ export default function PatientsPage() {
         </div>
 
         {/* Pagination */}
-        <div className="p-6 bg-clay-canvas/30 border-t border-clay-muted/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <button className="p-3 bg-white border-none rounded-2xl text-clay-muted shadow-clayCard hover:-translate-x-1 hover:text-clay-accent transition-all disabled:opacity-30 active:scale-95" disabled>
-              <ChevronLeft size={20} />
+        <div className="p-4 border-t border-slate-100 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <button className="p-2 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-400 disabled:opacity-50" disabled>
+              <ChevronLeft size={18} />
             </button>
-            <div className="flex items-center gap-2">
-               <button className="w-11 h-11 flex items-center justify-center rounded-2xl bg-gradient-to-br from-clay-accent to-clay-accent-alt text-white font-heading font-black text-sm shadow-clayButton active:scale-90 transition-all">1</button>
-               <button className="w-11 h-11 flex items-center justify-center rounded-2xl bg-white text-clay-muted font-heading font-bold text-sm shadow-clayCard hover:-translate-y-1 hover:text-clay-accent transition-all active:scale-90">2</button>
-               <button className="w-11 h-11 flex items-center justify-center rounded-2xl bg-white text-clay-muted font-heading font-bold text-sm shadow-clayCard hover:-translate-y-1 hover:text-clay-accent transition-all active:scale-90">3</button>
-               <span className="px-2 text-clay-muted/50 font-black">...</span>
-               <button className="w-11 h-11 flex items-center justify-center rounded-2xl bg-white text-clay-muted font-heading font-bold text-sm shadow-clayCard hover:-translate-y-1 hover:text-clay-accent transition-all active:scale-90">160</button>
+            <div className="flex items-center gap-1">
+               <button className="w-9 h-9 flex items-center justify-center rounded-lg bg-indigo-600 text-white font-bold text-sm">1</button>
+               <button className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-slate-50 text-slate-600 font-medium text-sm">2</button>
+               <button className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-slate-50 text-slate-600 font-medium text-sm">3</button>
+               <span className="px-1 text-slate-400">...</span>
+               <button className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-slate-50 text-slate-600 font-medium text-sm">160</button>
             </div>
-            <button className="p-3 bg-white border-none rounded-2xl text-clay-muted shadow-clayCard hover:translate-x-1 hover:text-clay-accent transition-all active:scale-95">
-              <ChevronRightIcon size={20} />
+            <button className="p-2 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-400">
+              <ChevronRightIcon size={18} />
             </button>
           </div>
-          <p className="text-xs font-heading font-black text-clay-muted uppercase tracking-widest">Hal 1 dari 160</p>
+          <p className="text-sm text-slate-500">Hal 1 dari 160</p>
         </div>
       </div>
     </div>

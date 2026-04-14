@@ -33,75 +33,75 @@ export default function ArticlesPage() {
 
   if (view === "editor") {
     return (
-      <div className="space-y-8">
+      <div className="space-y-6">
         <div className="flex items-center justify-between">
            <button 
               onClick={() => setView("list")}
-              className="text-clay-muted hover:text-clay-accent font-heading font-black text-xs uppercase tracking-widest flex items-center gap-2 transition-all hover:-translate-x-1 group"
+              className="text-slate-500 hover:text-indigo-600 font-medium flex items-center gap-2"
            >
-              <ChevronLeft size={20} className="transition-transform group-hover:scale-125" />
+              <ChevronLeft size={18} />
               Kembali ke Daftar
            </button>
-           <div className="flex items-center gap-4">
-              <button className="px-6 py-3 bg-white text-clay-muted font-heading font-bold rounded-[20px] shadow-clayCard hover:-translate-y-1 hover:shadow-clayButtonHover transition-all active:scale-95 active:shadow-clayPressed flex items-center gap-2">
-                 <Save size={18} />
+           <div className="flex items-center gap-3">
+              <button className="px-4 py-2 bg-white border border-slate-200 rounded-xl text-slate-600 font-medium hover:bg-slate-50 transition-colors text-sm flex items-center gap-2">
+                 <Save size={16} />
                  Simpan Draft
               </button>
-              <button className="px-8 py-3 bg-gradient-to-br from-clay-accent to-clay-accent-alt text-white rounded-[20px] font-heading font-black shadow-clayButton hover:-translate-y-1 hover:shadow-clayButtonHover transition-all active:scale-95 active:shadow-clayPressed flex items-center gap-2">
-                 <Rocket size={18} className="animate-clay-float" />
+              <button className="px-6 py-2 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-600/20 text-sm flex items-center gap-2">
+                 <Rocket size={16} />
                  Publikasikan
               </button>
            </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
            {/* Main Editor */}
            <div className="lg:col-span-2 space-y-6">
-              <div className="bg-white/80 backdrop-blur-xl rounded-[40px] border-none shadow-clayDeep p-10 min-h-[700px] flex flex-col group">
+              <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-8 min-h-[600px] flex flex-col">
                  <input 
                     type="text" 
                     placeholder="Masukkan Judul Artikel..." 
-                    className="text-4xl font-heading font-black text-clay-foreground placeholder:text-clay-muted/20 border-none focus:ring-0 w-full mb-10 outline-none bg-transparent"
+                    className="text-3xl font-bold text-slate-800 placeholder:text-slate-200 border-none focus:ring-0 w-full mb-8 outline-none"
                     autoFocus
                  />
                  
                  {/* Toolbar */}
-                 <div className="flex items-center gap-2 p-3 bg-clay-canvas/50 backdrop-blur-md rounded-2xl mb-10 shadow-clayPressed border border-white/50">
-                    <button className="p-3 hover:bg-white hover:shadow-clayCard rounded-xl text-clay-muted hover:text-clay-accent transition-all active:scale-90"><Type size={20} /></button>
-                    <div className="w-px h-8 bg-clay-muted/10 mx-2"></div>
-                    <button className="p-3 hover:bg-white hover:shadow-clayCard rounded-xl text-clay-muted hover:text-clay-accent transition-all font-black active:scale-90"><Bold size={20} /></button>
-                    <button className="p-3 hover:bg-white hover:shadow-clayCard rounded-xl text-clay-muted hover:text-clay-accent transition-all italic active:scale-90"><Italic size={20} /></button>
-                    <div className="w-px h-8 bg-clay-muted/10 mx-2"></div>
-                    <button className="p-3 hover:bg-white hover:shadow-clayCard rounded-xl text-clay-muted hover:text-clay-accent transition-all active:scale-90"><List size={20} /></button>
-                    <button className="p-3 hover:bg-white hover:shadow-clayCard rounded-xl text-clay-muted hover:text-clay-accent transition-all active:scale-90"><ImageIcon size={20} /></button>
-                    <div className="w-px h-8 bg-clay-muted/10 mx-2"></div>
-                    <button className="p-3 hover:bg-white hover:shadow-clayCard rounded-xl text-clay-muted hover:text-clay-accent transition-all active:scale-90"><Layout size={20} /></button>
+                 <div className="flex items-center gap-1 p-2 bg-slate-50 rounded-xl mb-6 border border-slate-100">
+                    <button className="p-2 hover:bg-white hover:shadow-sm rounded-lg text-slate-500 transition-all"><Type size={18} /></button>
+                    <div className="w-px h-6 bg-slate-200 mx-1"></div>
+                    <button className="p-2 hover:bg-white hover:shadow-sm rounded-lg text-slate-500 transition-all font-bold"><Bold size={18} /></button>
+                    <button className="p-2 hover:bg-white hover:shadow-sm rounded-lg text-slate-500 transition-all italic"><Italic size={18} /></button>
+                    <div className="w-px h-6 bg-slate-200 mx-1"></div>
+                    <button className="p-2 hover:bg-white hover:shadow-sm rounded-lg text-slate-500 transition-all"><List size={18} /></button>
+                    <button className="p-2 hover:bg-white hover:shadow-sm rounded-lg text-slate-500 transition-all"><ImageIcon size={18} /></button>
+                    <div className="w-px h-6 bg-slate-200 mx-1"></div>
+                    <button className="p-2 hover:bg-white hover:shadow-sm rounded-lg text-slate-500 transition-all"><Layout size={18} /></button>
                  </div>
 
                  <textarea 
                     placeholder="Mulai menulis konten artikel Anda di sini..."
-                    className="flex-1 w-full text-clay-foreground placeholder:text-clay-muted/30 border-none focus:ring-0 resize-none text-xl leading-relaxed outline-none font-sans bg-transparent"
+                    className="flex-1 w-full text-slate-700 placeholder:text-slate-300 border-none focus:ring-0 resize-none text-lg leading-relaxed outline-none"
                  />
               </div>
            </div>
 
            {/* Editor Sidebar */}
-           <div className="space-y-8">
-              <div className="bg-white/70 backdrop-blur-xl rounded-[32px] border-none shadow-clayCard p-8">
-                 <h3 className="text-lg font-heading font-black text-clay-foreground mb-8">Pengaturan Artikel</h3>
+           <div className="space-y-6">
+              <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
+                 <h3 className="font-bold text-slate-800 mb-4">Pengaturan Artikel</h3>
                  
-                 <div className="space-y-6">
+                 <div className="space-y-4">
                     <div>
-                       <label className="text-[10px] font-heading font-black text-clay-muted uppercase tracking-widest block mb-3">Thumbnail Utama</label>
-                       <div className="aspect-video bg-[#EFEBF5] border-2 border-dashed border-clay-accent/10 rounded-[24px] flex flex-col items-center justify-center text-clay-muted hover:border-clay-accent hover:bg-white hover:shadow-clayCard transition-all duration-300 cursor-pointer group shadow-clayPressed">
-                          <ImageIcon size={40} className="group-hover:scale-110 group-hover:text-clay-accent transition-transform" />
-                          <p className="text-xs font-heading font-black mt-3 uppercase tracking-wider">Upload Gambar</p>
+                       <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-2">Thumbnail</label>
+                       <div className="aspect-video bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl flex flex-col items-center justify-center text-slate-400 hover:border-indigo-300 hover:bg-indigo-50 transition-all cursor-pointer group">
+                          <ImageIcon size={32} className="group-hover:scale-110 transition-transform" />
+                          <p className="text-xs font-medium mt-2">Upload Gambar</p>
                        </div>
                     </div>
                     
                     <div>
-                       <label className="text-[10px] font-heading font-black text-clay-muted uppercase tracking-widest block mb-3">Kategori</label>
-                       <select className="w-full bg-[#EFEBF5] border-none rounded-xl py-3 px-4 text-sm font-heading font-bold text-clay-foreground shadow-clayPressed focus:outline-none focus:ring-4 focus:ring-clay-accent/10 focus:bg-white transition-all cursor-pointer">
+                       <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-2">Kategori</label>
+                       <select className="w-full bg-slate-50 border border-slate-200 rounded-lg py-2 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20">
                           <option>Tips Kesehatan</option>
                           <option>Edukasi Penyakit</option>
                           <option>Nutrisi & Diet</option>
@@ -109,29 +109,24 @@ export default function ArticlesPage() {
                     </div>
 
                     <div>
-                       <label className="text-[10px] font-heading font-black text-clay-muted uppercase tracking-widest block mb-3">Tags & Kata Kunci</label>
+                       <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-2">Tags</label>
                        <input 
                           type="text" 
                           placeholder="pisah dengan koma..." 
-                          className="w-full bg-[#EFEBF5] border-none rounded-xl py-3 px-4 text-sm font-heading font-bold text-clay-foreground shadow-clayPressed focus:outline-none focus:ring-4 focus:ring-clay-accent/10 focus:bg-white transition-all placeholder:text-clay-muted/30"
+                          className="w-full bg-slate-50 border border-slate-200 rounded-lg py-2 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
                        />
-                       <div className="flex flex-wrap gap-2 mt-4">
-                          <span className="px-3 py-1.5 bg-clay-accent/10 text-clay-accent text-[10px] font-heading font-black rounded-lg shadow-sm border border-clay-accent/5">HEPACARE</span>
-                          <span className="px-3 py-1.5 bg-clay-accent/10 text-clay-accent text-[10px] font-heading font-black rounded-lg shadow-sm border border-clay-accent/5">GAYA HIDUP</span>
+                       <div className="flex flex-wrap gap-2 mt-3">
+                          <span className="px-2 py-0.5 bg-indigo-50 text-indigo-600 text-[10px] font-bold rounded-md">HepaCare</span>
+                          <span className="px-2 py-0.5 bg-indigo-50 text-indigo-600 text-[10px] font-bold rounded-md">Gaya Hidup</span>
                        </div>
                     </div>
                  </div>
               </div>
 
-              <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-[32px] p-8 text-white shadow-clayDeep relative overflow-hidden group">
-                 <p className="text-[10px] font-heading font-black uppercase tracking-widest opacity-80 mb-4 flex items-center gap-2">
-                    <Rocket size={14} />
-                    SEO Search Preview
-                 </p>
-                 <p className="text-lg font-heading font-black line-clamp-2 leading-tight">Judul Artikel Akan Muncul Menarik di Google...</p>
-                 <p className="text-xs font-sans font-medium mt-3 line-clamp-2 opacity-70">Deskripsi singkat artikel Anda akan muncul di sini untuk membantu pembaca menemukan konten Anda via mesin pencari.</p>
-                 
-                 <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-white opacity-20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+              <div className="bg-emerald-50 rounded-2xl p-6 border border-emerald-100">
+                 <p className="text-xs font-bold text-emerald-600 uppercase mb-2">SEO Preview</p>
+                 <p className="text-sm font-bold text-slate-800 line-clamp-1">Judul Artikel Akan Muncul di Google...</p>
+                 <p className="text-[10px] text-slate-500 mt-1 line-clamp-2">Deskripsi singkat artikel Anda akan muncul di sini untuk membantu pembaca menemukan konten Anda via mesin pencari.</p>
               </div>
            </div>
         </div>
@@ -140,106 +135,106 @@ export default function ArticlesPage() {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-heading font-black text-clay-foreground tracking-tight">Artikel / Blog</h1>
-          <p className="text-clay-muted font-medium mt-1">Edukasi pasien Anda dengan konten tulisan yang bermanfaat.</p>
+          <h1 className="text-2xl font-bold text-slate-800">Artikel / Blog</h1>
+          <p className="text-slate-500 mt-1">Edukasi pasien Anda dengan konten tulisan yang bermanfaat.</p>
         </div>
         <button 
           onClick={() => setView("editor")}
-          className="flex items-center gap-2 px-8 py-4 bg-gradient-to-br from-clay-accent to-clay-accent-alt text-white rounded-[24px] font-heading font-black shadow-clayButton hover:-translate-y-1 hover:shadow-clayButtonHover transition-all active:scale-[0.92] active:shadow-clayPressed"
+          className="flex items-center gap-2 px-6 py-2.5 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-600/20"
         >
-          <Plus size={22} />
+          <Plus size={20} />
           <span>Tulis Artikel Baru</span>
         </button>
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-8 border-b border-clay-muted/10">
+      <div className="flex items-center gap-6 border-b border-slate-200">
          <button 
             onClick={() => setActiveTab("all")}
-            className={`pb-5 px-3 text-sm font-heading font-black transition-all relative uppercase tracking-widest ${activeTab === 'all' ? "text-clay-accent scale-110" : "text-clay-muted hover:text-clay-foreground"}`}
+            className={`pb-4 px-2 text-sm font-bold transition-all relative ${activeTab === 'all' ? "text-indigo-600" : "text-slate-400 hover:text-slate-600"}`}
          >
             Semua Artikel
-            {activeTab === 'all' && <div className="absolute bottom-0 left-0 w-full h-1.5 bg-clay-accent rounded-t-full shadow-[0_-4px_12px_rgba(124,58,237,0.3)]"></div>}
+            {activeTab === 'all' && <div className="absolute bottom-0 left-0 w-full h-1 bg-indigo-600 rounded-t-full"></div>}
          </button>
          <button 
             onClick={() => setActiveTab("published")}
-            className={`pb-5 px-3 text-sm font-heading font-black transition-all relative uppercase tracking-widest ${activeTab === 'published' ? "text-clay-accent scale-110" : "text-clay-muted hover:text-clay-foreground"}`}
+            className={`pb-4 px-2 text-sm font-bold transition-all relative ${activeTab === 'published' ? "text-indigo-600" : "text-slate-400 hover:text-slate-600"}`}
          >
             Telah Terbit
-            {activeTab === 'published' && <div className="absolute bottom-0 left-0 w-full h-1.5 bg-clay-accent rounded-t-full shadow-[0_-4px_12px_rgba(124,58,237,0.3)]"></div>}
+            {activeTab === 'published' && <div className="absolute bottom-0 left-0 w-full h-1 bg-indigo-600 rounded-t-full"></div>}
          </button>
          <button 
             onClick={() => setActiveTab("draft")}
-            className={`pb-5 px-3 text-sm font-heading font-black transition-all relative uppercase tracking-widest ${activeTab === 'draft' ? "text-clay-accent scale-110" : "text-clay-muted hover:text-clay-foreground"}`}
+            className={`pb-4 px-2 text-sm font-bold transition-all relative ${activeTab === 'draft' ? "text-indigo-600" : "text-slate-400 hover:text-slate-600"}`}
          >
             Draft
-            {activeTab === 'draft' && <div className="absolute bottom-0 left-0 w-full h-1.5 bg-clay-accent rounded-t-full shadow-[0_-4px_12px_rgba(124,58,237,0.3)]"></div>}
+            {activeTab === 'draft' && <div className="absolute bottom-0 left-0 w-full h-1 bg-indigo-600 rounded-t-full"></div>}
          </button>
       </div>
 
       {/* Article List Table */}
-      <div className="bg-white/70 backdrop-blur-xl rounded-[40px] border-none shadow-clayDeep overflow-hidden">
-        <div className="p-6 border-b border-clay-muted/5 flex items-center justify-between">
-            <div className="relative w-full max-w-md">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-clay-muted/50 w-4 h-4" />
+      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+        <div className="p-4 border-b border-slate-100 flex items-center justify-between">
+            <div className="relative w-full max-w-sm">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4" />
               <input 
                 type="text" 
                 placeholder="Cari judul artikel..." 
-                className="w-full bg-[#EFEBF5] border-none rounded-2xl py-3 pl-12 pr-4 text-sm text-clay-foreground shadow-clayPressed focus:outline-none focus:ring-4 focus:ring-clay-accent/10 focus:bg-white transition-all font-sans placeholder:text-clay-muted/50"
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg py-2 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
               />
             </div>
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse">
-             <thead>
-                <tr className="bg-clay-canvas/50">
-                   <th className="px-8 py-5 text-[10px] font-heading font-black text-clay-muted uppercase tracking-widest">Judul Artikel</th>
-                   <th className="px-8 py-5 text-[10px] font-heading font-black text-clay-muted uppercase tracking-widest">Tanggal Terbit</th>
-                   <th className="px-8 py-5 text-[10px] font-heading font-black text-clay-muted uppercase tracking-widest">Status</th>
-                   <th className="px-8 py-5 text-[10px] font-heading font-black text-clay-muted uppercase tracking-widest">Dilihat</th>
-                   <th className="px-8 py-5 text-[10px] font-heading font-black text-clay-muted uppercase tracking-widest text-center">Aksi</th>
+          <table className="w-full text-left">
+             <thead className="bg-slate-50/50">
+                <tr>
+                   <th className="px-6 py-4 text-sm font-bold text-slate-700">Judul Artikel</th>
+                   <th className="px-6 py-4 text-sm font-bold text-slate-700">Tanggal</th>
+                   <th className="px-6 py-4 text-sm font-bold text-slate-700">Status</th>
+                   <th className="px-6 py-4 text-sm font-bold text-slate-700">Dilihat</th>
+                   <th className="px-6 py-4 text-sm font-bold text-slate-700 text-center">Aksi</th>
                 </tr>
              </thead>
-             <tbody className="divide-y divide-clay-muted/5">
+             <tbody className="divide-y divide-slate-100">
                 {articles.map((article) => (
-                  <tr key={article.id} className="hover:bg-white group cursor-pointer transition-all duration-300">
-                    <td className="px-8 py-6">
-                       <p className="font-heading font-black text-clay-foreground text-base line-clamp-1 group-hover:text-clay-accent transition-colors">{article.title}</p>
+                  <tr key={article.id} className="hover:bg-slate-50/30 transition-colors group">
+                    <td className="px-6 py-4">
+                       <p className="font-bold text-slate-800 line-clamp-1 group-hover:text-indigo-600 transition-colors">{article.title}</p>
                     </td>
-                    <td className="px-8 py-6 text-sm font-sans font-bold text-clay-muted/70">{article.date}</td>
-                    <td className="px-8 py-6">
-                       <span className={`px-4 py-1.5 rounded-xl text-[10px] font-heading font-black uppercase tracking-widest shadow-sm border ${
+                    <td className="px-6 py-4 text-sm text-slate-500">{article.date}</td>
+                    <td className="px-6 py-4">
+                       <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${
                           article.status === 'Published' 
                             ? 'bg-emerald-50 text-emerald-600 border-emerald-100' 
-                            : 'bg-clay-canvas text-clay-muted border-transparent'
+                            : 'bg-slate-50 text-slate-500 border-slate-200'
                        }`}>
                           {article.status}
                        </span>
                     </td>
-                    <td className="px-8 py-6">
-                       <div className="flex items-center gap-2 text-sm font-heading font-bold text-clay-muted">
-                          <Eye size={16} className="text-clay-accent/50" />
+                    <td className="px-6 py-4 text-sm text-slate-500">
+                       <div className="flex items-center gap-1.5">
+                          <Eye size={14} />
                           {article.views}
                        </div>
                     </td>
-                    <td className="px-8 py-6">
-                       <div className="flex items-center justify-center gap-3">
+                    <td className="px-6 py-4">
+                       <div className="flex items-center justify-center gap-2">
                           <button 
                             onClick={() => setView("editor")}
-                            className="p-3 bg-white text-clay-muted hover:text-clay-accent hover:shadow-clayCard rounded-xl transition-all active:scale-90"
+                            className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all"
                           >
-                             <Edit2 size={18} />
+                             <Edit2 size={16} />
                           </button>
-                          <button className="p-3 bg-white text-clay-muted hover:text-rose-600 hover:shadow-clayCard rounded-xl transition-all active:scale-90">
-                             <Trash2 size={18} />
+                          <button className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-all">
+                             <Trash2 size={16} />
                           </button>
-                          <button className="p-3 bg-white text-clay-muted hover:text-clay-foreground hover:shadow-clayCard rounded-xl transition-all active:scale-90">
-                             <MoreHorizontal size={18} />
+                          <button className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-all">
+                             <MoreHorizontal size={16} />
                           </button>
                        </div>
                     </td>
